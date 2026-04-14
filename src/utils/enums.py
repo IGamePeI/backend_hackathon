@@ -10,3 +10,8 @@ class UserRole(Enum):
 class Status(Enum):
     READY = "ready"
     expected = "expected"
+
+class Category(Enum):
+    PAST = "past"
+    PRESENT = "present"
+    FUTURE = "future"
