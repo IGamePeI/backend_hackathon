@@ -12,6 +12,12 @@ async def get_dish(dish_id: int) -> dish_model.Dish | None:
         return user
 
 
+async def get_dishes() -> list[dish_model.Dish]:
+    async with async_session() as session:
+        result = await session.execute(select(dish_model.Dish))
+        user = result.scalars().all()
+        return user
+
 
 async def create_dish(dish: dish_schema.DishCreate) -> dish_model.Dish:
     async with async_session() as session:

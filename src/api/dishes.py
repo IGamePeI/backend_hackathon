@@ -3,7 +3,7 @@ from fastapi import APIRouter, HTTPException
 from crud import dish as dish_crud
 from schemas import dish as dish_schema
 
-router = APIRouter(prefix="/dishs", tags=["dishs"])
+router = APIRouter(prefix="/dishes", tags=["dishes"])
 
 
 @router.post("/", response_model=dish_schema.Dish, status_code=201)
@@ -17,6 +17,11 @@ async def read_dish(dish_id: int):
     if db_dish is None:
         raise HTTPException(status_code=404, detail="dish not found")
     return db_dish
+
+@router.get("/dishes/all")
+async def get_dishes():
+    dishes = await dish_crud.get_dishes()
+    return dishes
 
 
 @router.patch("/{dish_id}", response_model=dish_schema.Dish)

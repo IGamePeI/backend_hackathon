@@ -10,6 +10,10 @@ router = APIRouter(prefix="/orders", tags=["Orders"])
 async def create_order(order: order_schema.OrderCreate):
     return await order_crud.create_order(order=order)
 
+@router.get('/orders/all', response_model=list[order_schema.Order])
+async def read_orders():
+    orders = await order_crud.get_orders()
+    return orders
 
 @router.get("/{order_id}", response_model=order_schema.Order)
 async def read_order(order_id: int):
