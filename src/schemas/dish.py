@@ -6,7 +6,6 @@ from utils.enums import Category
 
 
 class DishCreate(BaseModel):
-    image_url: str
     name: str
     description: str
     price: float
@@ -20,7 +19,6 @@ class DishUpdate(BaseModel):
 
 class Dish(BaseModel):
     id: int
-    image_url: str
     name: str
     description: str
     price: float

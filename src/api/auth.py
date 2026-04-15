@@ -6,7 +6,7 @@ from utils import auth
 from utils.enums import UserRole
 from utils.security import verify_password
 
-router = APIRouter(prefix="/v1/auth", tags=["Auth"])
+router = APIRouter(prefix="/auth", tags=["Auth"])
 
 @router.post("/login")
 async def login(user: schema.UserLogin, response: Response):
